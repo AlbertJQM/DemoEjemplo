@@ -51,10 +51,10 @@ namespace DemoEjemplo.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            Curso curso = await _cursoService.Delete(id);
-            if (curso != null)
+            Curso deletedcurso = await _cursoService.Delete(id);
+            if (deletedcurso != null)
             {
-                return Ok(curso);
+                return Ok(new { message = "Curso eliminado.", curso = deletedcurso });
             }
             return NotFound(new { message = "Curso no encontrado." });
         }

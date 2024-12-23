@@ -9,15 +9,16 @@ using System.Threading.Tasks;
 
 namespace DB.Models
 {
-    public class Curso
+    public class Estudiante
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CursoID { get; set; }
+        public int EstudianteID { get; set; }
         public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        public int Horas { get; set; }
-        
+        public string Apellido { get; set; }
+        public string Direccion { get; set; }
+        public string Telefono { get; set; }
+
         [JsonIgnore]
         public virtual ICollection<Inscripcion> ?Inscripciones { get; set; }
     }

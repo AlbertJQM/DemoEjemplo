@@ -19,8 +19,13 @@ builder.Services.AddDbContext<RegContext>(options =>
 
 //Repository
 builder.Services.AddScoped<CursoRepository>();
+builder.Services.AddScoped<EstudianteRepository>();
+builder.Services.AddScoped<InscripcionRepository>();
+
 //Service
 builder.Services.AddScoped<CursoService>();
+builder.Services.AddScoped<EstudianteService>();
+builder.Services.AddScoped<InscripcionService>();
 
 var app = builder.Build();
 

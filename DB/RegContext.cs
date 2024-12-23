@@ -13,5 +13,7 @@ namespace DB
         public RegContext(DbContextOptions options): base(options) { }
 
         public DbSet<Curso> Cursos { get; set; }
+        public DbSet<Estudiante> Estudiantes { get; set; }
+        public DbSet<Inscripcion> Inscripciones { get; set; }
     }
 }

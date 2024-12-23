@@ -4,21 +4,20 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace DB.Models
 {
-    public class Curso
+    public class Inscripcion
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int InscripcionID { get; set; }
+        public int EstudianteID { get; set; }
         public int CursoID { get; set; }
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        public int Horas { get; set; }
-        
-        [JsonIgnore]
-        public virtual ICollection<Inscripcion> ?Inscripciones { get; set; }
+        public DateTime FechaInscripcion { get; set; }
+
+        public virtual Estudiante ?Estudiante { get; set; }
+        public virtual Curso ?Curso { get; set; }
     }
 }

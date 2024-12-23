@@ -3,6 +3,7 @@ using System;
 using DB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DB.Migrations
 {
     [DbContext(typeof(RegContext))]
-    partial class RegContextModelSnapshot : ModelSnapshot
+    [Migration("20241223204430_v1.3.0")]
+    partial class v130
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -94,30 +97,7 @@ namespace DB.Migrations
 
                     b.HasKey("InscripcionID");
 
-                    b.HasIndex("CursoID");
-
-                    b.HasIndex("EstudianteID");
-
                     b.ToTable("Inscripciones");
-                });
-
-            modelBuilder.Entity("DB.Models.Inscripcion", b =>
-                {
-                    b.HasOne("DB.Models.Curso", "Curso")
-                        .WithMany()
-                        .HasForeignKey("CursoID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DB.Models.Estudiante", "Estudiante")
-                        .WithMany()
-                        .HasForeignKey("EstudianteID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Curso");
-
-                    b.Navigation("Estudiante");
                 });
 #pragma warning restore 612, 618
         }
